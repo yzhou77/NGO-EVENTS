@@ -1,0 +1,19 @@
+<div *ngIf="!currentUser">
+<h2>Login</h2>
+<form [formGroup]="loginForm" (ngSubmit)="onSubmit()" enctype='multipart/form-data'>
+    <div class="form-group">
+      <label>username</label>
+      <input type="text" formControlName="username" class="form-control"><br>
+      <label>password</label>
+      <input type="text" formControlName="password" class="form-control"><br>
+    </div>
+    <button class="btn btn-primary" [disabled]="!loginForm.valid" type="submit">Submit</button>
+</form>
+
+<button (click) = "goRegister()">Register</button></div>
+<div *ngIf="currentUser">
+  You already logged in !
+</div>
+<div *ngIf="log2 < 0">
+  username or password incorrect !
+</div>

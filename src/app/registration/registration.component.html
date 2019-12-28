@@ -1,0 +1,46 @@
+<h2>Registration for {{event.Event_name}}</h2>
+
+<form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label>Event Name</label>
+      <select formControlName="Event_name" [(ngModel)]="event.Event_name">
+        <option value="{{event.Event_name}}">
+           {{event.Event_name}}
+        </option>
+      </select><br>
+      <label>First Name</label>
+      <input type="text" formControlName="First_name" class="form-control"><br>
+      <label>Last Name</label>
+      <input type="text" formControlName="Last_name" class="form-control"><br>
+      <label>Email</label>
+      <input type="text" formControlName="Email_id" class="form-control"><br>
+      <label>Contact Number</label>
+      <input type="text" formControlName="Contact" class="form-control"><br>
+      <label>Address</label>
+      <input type="text" formControlName="Address" class="form-control"><br>
+      <label>Total Adult Quantity</label>
+      <input type="number" formControlName="Total_adult_qty" class="form-control"><br>
+      <label>Total Child Quantity</label>
+      <input type="number" formControlName="Total_child_qty" class="form-control"><br>
+    </div>
+      <div class="form-group">
+    </div>
+    <div *ngIf="checkid == 1; else elseBlock">  
+        <h3> Confirm Registration</h3>
+        {{registrationForm.value| json}}<br><br>
+        <font color="blue">Total Price:
+        {{event.Adult_ticket_price*registrationForm.value.Total_adult_qty+event.Child_ticket_price*registrationForm.value.Total_child_qty|currency:'USD':true}}</font>
+        <br><br>
+        <div *ngIf="confirmid == 0">
+        <button class="btn btn-primary" [disabled]="!registrationForm.valid" type="submit" (click)="FinalConfirm()">Confirm</button></div>
+        <div *ngIf="confirmid == 1">Registration Confirmed!</div>
+     </div>
+<ng-template #elseBlock><br>(Click "Next" to confirm registration)</ng-template>
+  </form><br>
+  <br> <div *ngIf="checkid != 1"> <button (click)="Confirm()">Next</button></div>
+
+  <!--
+  <app-confirmation [eventname] = event.Event_name [adult_qty] = registrationForm.value.Total_adult_qty [child_qty] = registrationForm.value.Total_child_qty
+  [adult_price] = event.Adult_ticket_price [child_price]=event.Child_ticket_price></app-confirmation>
+  -->
+ 

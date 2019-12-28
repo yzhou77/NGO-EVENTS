@@ -1,0 +1,38 @@
+<style>
+    .odd {
+        background-color: #36BFDC;
+    
+    }
+    .even {
+        background-color: #8F9698;
+    }
+    table tr.highlight {
+        background-color: #4CAF50 !important;
+        color: #ffffff;
+    }
+</style>
+
+
+<h2>Event Details</h2>
+<h3>{{errorMsg}}</h3>
+<img src = "{{'http://127.0.0.1:8000'+event.Event_image}}"> <br>
+Event ID: {{event.Event_id}} <br>
+Event Name: {{event.Event_name}} <br>
+Event Description: {{event.Event_description}} <br>
+Event Category: {{event.Event_category}} <br>
+Event Start Date: {{event.Event_start_date}} <br>
+Event End Date: {{event.Event_end_date}} <br>
+Event Start Time: {{event.Event_start_time}} <br>
+Event End Time: {{event.Event_end_time}} <br>
+Event Location: {{event.Event_location}} <br>
+Allow Registration: {{event.Allow_registration}} <br>
+Adult Ticket Price: {{event.Adult_ticket_price|currency:'USD':true}} <br>
+Child Ticket Price: {{event.Child_ticket_price|currency:'USD':true}} <br>
+<br>
+<div *ngIf="event.Allow_registration == true">
+<button (click)="Registration()">Registration</button></div>
+<div *ngIf="event.Allow_registration == false">
+    <font color = "red">Registration for this event is not open!</font></div>
+
+<router-outlet></router-outlet> 
+

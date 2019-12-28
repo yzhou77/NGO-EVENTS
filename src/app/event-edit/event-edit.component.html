@@ -1,0 +1,54 @@
+<p>Edit Event information ({{id}})</p>
+
+<form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label>Event ID</label>
+      <input type="text" formControlName="Event_id" class="form-control" [(ngModel)]="event.Event_id"><br>
+      <label>Event Name</label>
+      <input type="text" formControlName="Event_name" class="form-control" [(ngModel)]="event.Event_name"><br>
+      <label>Event Description</label>
+      <input type="text" formControlName="Event_description" class="form-control" [(ngModel)]="event.Event_description"><br>
+      <label>Event Category</label>
+      <select formControlName="Event_category" [(ngModel)]="event.Event_category">
+        <option value="Presentation">
+           Presentation
+        </option>
+        <option value="Conference">
+           Conference
+          </option>
+          <option value="Seminar">
+           Seminar
+          </option>
+      </select><br>
+      <label>Event Start Date</label>
+      <input type="date" formControlName="Event_start_date" class="form-control" [(ngModel)]="event.Event_start_date"><br>
+      <label>Event End Date</label>
+      <input type="date" formControlName="Event_end_date" class="form-control" [(ngModel)]="event.Event_end_date"><br>
+      <label>Event Start Time</label>
+      <input type="time" formControlName="Event_start_time" class="form-control" [(ngModel)]="event.Event_start_time"><br>
+      <label>Event End Time</label>
+      <input type="time" formControlName="Event_end_time" class="form-control" [(ngModel)]="event.Event_end_time"><br>
+      <label>Event Location</label>
+      <input type="text" formControlName="Event_location" class="form-control" [(ngModel)]="event.Event_location"><br>
+      <label>Allow Registration</label>
+      <select formControlName="Allow_registration" [(ngModel)]="event.Allow_registration">
+        <option value=true>
+          true
+        </option>
+        <option value=false>
+            false
+          </option>
+      </select><br>
+      <label>Event Image</label>
+     <!--<input type="file" formControlName="Event_image" class="form-control" [(ngModel)]="event.Event_image">--> <br>
+      <label>Adult Ticket Price</label>
+      <input type="number" formControlName="Adult_ticket_price" class="form-control" [(ngModel)]="event.Adult_ticket_price"><br>
+      <label>Child Ticket Price</label>
+      <input type="number" formControlName="Child_ticket_price" class="form-control" [(ngModel)]="event.Child_ticket_price"><br>
+      </div>
+    <div class="form-group">
+    </div>
+    <button class="btn btn-primary" [disabled]="!registrationForm.valid" type="submit">Submit</button>
+  </form><br>
+  {{registrationForm.value | json}}
+

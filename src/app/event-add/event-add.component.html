@@ -1,0 +1,58 @@
+<h2>Add a new Event</h2>
+
+<form [formGroup]="registrationForm" (ngSubmit)="onSubmit()" enctype='multipart/form-data'>
+    <div class="form-group">
+      <label>Event ID</label>
+      <input type="text" formControlName="Event_id" class="form-control"><br>
+      <label>Event Name</label>
+      <input type="text" formControlName="Event_name" class="form-control"><br>
+      <label>Event Description</label>
+      <input type="text" formControlName="Event_description" class="form-control"><br>
+      <label>Event Category</label>
+      <select formControlName="Event_category">
+        <option value="Presentation">
+           Presentation
+        </option>
+        <option value="Conference">
+           Conference
+          </option>
+          <option value="Seminar">
+           Seminar
+          </option>
+      </select><br>
+      <label>Event Start Date</label>
+      <input type="date" formControlName="Event_start_date" class="form-control"><br>
+      <label>Event End Date</label>
+      <input type="date" formControlName="Event_end_date" class="form-control"><br>
+      <label>Event Start Time</label>
+      <input type="time" formControlName="Event_start_time" class="form-control"><br>
+      <label>Event End Time</label>
+      <input type="time" formControlName="Event_end_time" class="form-control"><br>
+      <label>Event Location</label>
+      <input type="text" formControlName="Event_location" class="form-control"><br>
+      <label>Allow Registration</label>
+      <select formControlName="Allow_registration">
+        <option value=true>
+          true
+        </option>
+        <option value=false>
+            false
+          </option>
+      </select><br>
+      <label>Event Image</label><br>
+      <!--<input type="file" id="Event_image" (change)="onFileChange($event)" ><br>-->
+      <!--<input type="file" formControlName="Event_image" class="form-control"><br>-->
+      <label>Adult Ticket Price</label>
+      <input type="number" formControlName="Adult_ticket_price" class="form-control"><br>
+      <label>Child Ticket Price</label>
+      <input type="number" formControlName="Child_ticket_price" class="form-control"><br>
+      </div>
+    <div class="form-group">
+    </div>
+    <button class="btn btn-primary" [disabled]="!registrationForm.valid" type="submit" (click)="Refresh()">Submit</button>
+  </form><br>
+  {{registrationForm.value | json}}
+
+  <div *ngIf="response && imageURL">
+    <img [src]='imageURL' />
+  </div>

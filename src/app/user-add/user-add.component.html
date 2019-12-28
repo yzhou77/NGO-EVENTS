@@ -1,0 +1,29 @@
+<h2>Add a new User</h2>
+
+<form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label>First Name</label>
+      <input type="text" formControlName="firstName" class="form-control">
+      <label>Last Name</label>
+      <input type="text" formControlName="lastName" class="form-control">
+      <label>Email</label>
+      <input type="text" formControlName="email" class="form-control">
+      <label>Username</label>
+      <input type="text" formControlName="username" class="form-control">
+      <label>Password</label>
+      <input type="text" formControlName="password" class="form-control">
+      <label>Role</label>
+      <select formControlName="role">
+        <option value="admin">
+          admin
+        </option>
+        <option value="user">
+            user
+          </option>
+      </select>
+      </div>
+    <div class="form-group">
+    </div>
+    <button class="btn btn-primary" [disabled]="!registrationForm.valid" type="submit" (click)="Refresh()">Submit</button>
+  </form>
+  {{registrationForm.value | json}}

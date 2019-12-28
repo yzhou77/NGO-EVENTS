@@ -1,0 +1,36 @@
+<style>
+    .odd {
+        background-color: #36BFDC;
+    
+    }
+    .even {
+        background-color: #8F9698;
+    }
+    table tr.highlight {
+        background-color: #4CAF50 !important;
+        color: #ffffff;
+    }
+</style>
+
+<h2>User View</h2>
+<h3>{{errorMsg}}</h3>
+
+<table class = "table table-bordered">
+    <thead>
+        <tr>
+            <th>Event</th>
+            <th>Location</th>
+            <th></th>
+        </tr>
+        <td *ngIf='events.length === 0'>No data found</td>
+    </thead>
+    <tbody><tr *ngFor="let v of events; let o = odd; let e = even" 
+        [class.odd]="o" [class.even]="e" >
+            <td><button (click)="Details(v)">{{v.Event_name}}</button></td>
+            <td>{{v.Event_location}}</td>
+            <td><img src = "{{'http://127.0.0.1:8000'+v.Event_image}}"></td>
+        </tr>
+    </tbody>
+</table>
+
+<router-outlet></router-outlet>

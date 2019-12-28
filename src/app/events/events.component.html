@@ -1,0 +1,46 @@
+<style>
+    .odd {
+        background-color: #36BFDC;
+    
+    }
+    .even {
+        background-color: #8F9698;
+    }
+    table tr.highlight {
+        background-color: #4CAF50 !important;
+        color: #ffffff;
+    }
+</style>
+
+<h2>Event Management</h2>
+<button (click)="Add()">Add a new Event</button>
+    <h3>{{errorMsg}}</h3>
+<table class = "table table-bordered">
+    <thead>
+        <tr>
+            <th>Event</th>
+            <th>Category</th>
+            <th>Location</th>
+            <th>Start Date</th>
+            <th>End Date</th>
+            <th></th>
+            <th></th>
+        </tr>
+        <td *ngIf='events.length === 0'>No data found</td>
+    </thead>
+    <tbody><tr *ngFor="let v of events; let o = odd; let e = even" 
+        [class.odd]="o" [class.even]="e" >
+            <td>{{v.Event_name}}</td>
+            <td>{{v.Event_category}}</td>
+            <td>{{v.Event_location}}</td>
+            <td>{{v.Event_start_date | date}}</td>
+            <td>{{v.Event_end_date | date}}</td>
+            <td><button (click)="Edit(v)">Edit</button></td>
+            <td><button (click)="Confirm(v)">Delete</button></td>
+        </tr>
+    </tbody>
+</table>
+
+<router-outlet></router-outlet>
+
+
